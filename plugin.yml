@@ -1,0 +1,96 @@
+main: me.echau.myfirstplugin.Main
+name: MyFirstPlugin
+version: 1.0
+author: TrueDefault
+description: My very first plugin!
+commands:
+  cointoss:
+    description: Flip a coin! Guess either heads or tails and see what happens.
+    usage: /cointoss <heads / tails>
+  damage:
+    description: Damages a player by the specified amount of hearts.
+    usage: /damage <player> <number of hearts>
+  ef:
+    description: Enables Farts Mode for the specified player. Sneak to fart! Same as /enablefarts
+    usage: /ef [player]
+  ep:
+    description: Enables the ability to poop for the specified player. Sneak to poop! Same as /enablepooping
+    usage: /ep [player]
+  enablefarts:
+    description: Enables Farts Mode for the specified player. Sneak to fart! Same as /ef
+    usage: /enablefarts [player]
+  enablepooping:
+    description: Enables the ability to poop for the specified player. Sneak to poop! Same as /ep
+    usage: /enablepooping [player]
+  exarrows:
+    description: Toggles Explosive Arrows for the specified player. When enabled, arrows explode upon landing.
+    usage: /exarrows [player]
+  feed:
+    description: Gives yourself/someone full hunger bars.
+    usage: /feed [player]
+  givedirt:
+    description: Gives a player the specified amount of dirt.
+    usage: /givedirt <player> [amount]
+  heal:
+    description: Gives yourself/someone full health.
+    usage: /heal [player]
+  launchmode:
+    description: Toggles Launch Mode for the specified player. When enabled, shooting a bow will launch you in the air. Same as /lm
+    usage: /launchmode [player]
+  lm:
+    description: Toggles Launch Mode for the specified player. When enabled, shooting a bow will launch you in the air. Same as /launchmode
+    usage: /lm [player]
+  meme:
+    description: Displays a random meme.
+    usage: /meme
+  modes:
+    description: Returns a list of enabled MyFirstPlugin modes for the specified player.
+    usage: /modes [player]
+  orelogs:
+    description: Views OreLogs of a specified player. OreLogs displays all ores that a player has mined in the past hour.
+    usage: /orelogs <player>
+  rainbowarmor:
+    description: Toggles Rainbow Armor for the specified player. When enabled, equipped leather armor always changes color. Same as /rarmor
+    usage: /rainbowarmor [player]
+  rarmor:
+    description: Toggles Rainbow Armor for the specified player. When enabled, equipped leather armor always changes color. Same as /rainbowarmor
+    usage: /rarmor [player]
+  recarea:
+    description: Calculates the area of a rectangle with the specified length and width. Same as /rectanglearea
+    usage: /recarea <length> <width>
+  rectanglearea:
+    description: Calculates the area of a rectangle with the specified length and width. Same as /recarea
+    usage: /rectanglearea <length> <width>
+  reverse:
+    description: Reverses the word(s) you put into the command.
+    usage: /reverse <a string of words>
+  rteleport:
+    description: Teleports you to a random location. Same as /rtp
+    usage: /rteleport
+  rtp:
+    description: Teleports you to a random location. Same as /rteleport
+    usage: /rtp
+  seeyoulater:
+    description: SEE YOU LATER!
+    usage: /seeyoulater
+  setfartdmg:
+    description: Sets the damage of a Fart (produced when sneaking in Farts Mode) to the specified number of hearts.
+    usage: /setfartdmg <number of hearts>
+  setspawn:
+    description: Sets world spawn of the world you are currently in. 
+    usage: /setspawn [x] [y] [z] [pitch] [yaw]
+  spawn:
+    description: Teleports to the spawn of the world you are currently in.
+    usage: /spawn
+  tpl:
+    description: Teleports to a player and strikes them with lightning! Same as /tplightning
+    usage: /tpl <player>
+  tplightning:
+    description: Teleports to a player and strikes them with lightning! Same as /tpl
+    usage: /tplightning <player>
+  walkonsmoke:
+    description: Toggles WalkOnSmoke Mode for the specified player. When enabled, fly around in the air and look down at your feet! Same as /wos
+    usage: /walkonsmoke [player]
+  wos:
+    description: Toggles WalkOnSmoke Mode for the specified player. When enabled, fly around in the air and look down at your feet! Same as /walkonsmoke
+    usage: /wos [player]
