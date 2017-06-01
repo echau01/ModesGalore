@@ -115,9 +115,6 @@ public class Main extends JavaPlugin {
 		if (!config.contains("FartsDamageInHearts")) {
 			config.set("FartsDamageInHearts", 5);
 		}
-		if (!config.contains("PoopDamageInHearts")) {
-			config.set("PoopDamageInHearts", 1);
-		}
 	}
 
 	/*
