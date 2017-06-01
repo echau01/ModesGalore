@@ -71,7 +71,6 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new WalkOnSmoke(this), 0L, 1L);
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new ClearOreLogs(), 60 * 60 * 20L, 60 * 60 * 20L);
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new OreLogsAlmostCleared(), 55 * 60 * 20L, 55 * 60 * 20L);
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new PoopDamage(this), 0L, 0L);
 
 		//Config
 		try {
