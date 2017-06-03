@@ -6,8 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -163,23 +161,23 @@ public class Main extends JavaPlugin {
 						this.writeMemeFileDefaults();
 					} else {
 						//List of all the lines in the memes.txt file.
-						List<String> fileLines = new ArrayList<String>(numLines);
+						String[] fileLines = new String[numLines];
 						
 						//Re-reads all of the lines with a second reader
 						//Adds each line's contents to the fileLines list.
 						for (int i = 0; i < numLines; i++) {
 							String line = reader.readLine();
-							fileLines.add(i, line);
+							fileLines[i] = line;
 						}
 
 						//Sets the default lines of the file.
-						fileLines.set(0, "**********IMPORTANT DO NOT DELETE, YOU WILL LOSE MEMES IF YOU DO**********");
-						fileLines.set(1, "Add your memes starting from line #8.");
-						fileLines.set(2, "Each line is a meme. Do not put any blank lines in between.");
-						fileLines.set(3, "If you want multi-line memes, insert the characters \"\\n\" where you want the new line to start.");
-						fileLines.set(4, "Example: What\'s 1 + 1? \\n3.");
-						fileLines.set(5, "**********IMPORTANT DO NOT DELETE, YOU WILL LOSE MEMES IF YOU DO**********");
-						fileLines.set(6, "");
+						fileLines[0] = "**********IMPORTANT DO NOT DELETE, YOU WILL LOSE MEMES IF YOU DO**********";
+						fileLines[1] = "Add your memes starting from line #8.";
+						fileLines[2] = "Each line is a meme. Do not put any blank lines in between.";
+						fileLines[3] = "If you want multi-line memes, insert the characters \"\\n\" where you want the new line to start.";
+						fileLines[4] = "Example: What\'s 1 + 1? \\n3.";
+						fileLines[5] = "**********IMPORTANT DO NOT DELETE, YOU WILL LOSE MEMES IF YOU DO**********";
+						fileLines[6] = "";
 
 						//Note: BufferedWriter deletes the existing contents of the file.
 						//Do not declare it along with the readers in the try-with-resources statement.
