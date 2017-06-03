@@ -145,17 +145,14 @@ public class Main extends JavaPlugin {
 					BufferedReader lineCounter = new BufferedReader(new FileReader(memeFile));
 					BufferedReader reader = new BufferedReader(new FileReader(memeFile))
 				) {
-					//List of all the lines in the memes.txt file.
-					List<String> fileLines = new ArrayList<String>();
-
-					//Represents the number of lines in the memes.txt file.
+					//Represents the number of lines in the memes.txt file, including the default lines.
 					int numLines = 0;
 
 					//Reads through all the lines and counts them.
 					while (lineCounter.readLine() != null) {
 						numLines++;
 					}
-
+					
 					/* 
 					 * If there are less than 8 lines in the file, all of the default lines are
 					 * written. The memes.txt file then looks like it was just created, with no
@@ -165,6 +162,9 @@ public class Main extends JavaPlugin {
 					if (numLines < 8) {
 						this.writeMemeFileDefaults();
 					} else {
+						//List of all the lines in the memes.txt file.
+						List<String> fileLines = new ArrayList<String>(numLines);
+						
 						//Re-reads all of the lines with a second reader
 						//Adds each line's contents to the fileLines list.
 						for (int i = 0; i < numLines; i++) {
@@ -196,9 +196,9 @@ public class Main extends JavaPlugin {
 										lineNumber++;
 									} else {
 										/*
-										 * Removes blank lines starting from line 8
+										 * Removes empty lines starting from line 8
 										 *   (i.e. where the memes start).
-										 * If there is a blank line, do not add to the line number.
+										 * If there is a empty line, do not add to the line number.
 										 * This makes sure lineNumber is an accurate representation
 										 * of what line number the method is printing to.
 										 */
@@ -241,7 +241,7 @@ public class Main extends JavaPlugin {
 			writer.newLine();
 			writer.write("**********IMPORTANT DO NOT DELETE, YOU WILL LOSE MEMES IF YOU DO**********");
 			writer.newLine();
-			writer.newLine();
+			writer.newLine();	//creates empty line at line 7.
 			Bukkit.getLogger().info("[MyFirstPlugin] Successfully wrote defaults to memes.txt!");
 		} catch (IOException e) {
 			Bukkit.getLogger().severe("[MyFirstPlugin] Failed to write defaults to memes.txt");
