@@ -1,4 +1,4 @@
-main: me.echau.myfirstplugin.Main
+main: ca.echau.myfirstplugin.Main
 name: MyFirstPlugin
 version: 1.0
 author: TrueDefault
