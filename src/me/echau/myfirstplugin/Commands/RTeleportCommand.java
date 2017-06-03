@@ -11,16 +11,17 @@ import org.bukkit.entity.Player;
 
 public class RTeleportCommand implements CommandExecutor {
 	@Override
-	public boolean onCommand(CommandSender theSender, Command cmd, String commandLabel, String args[]) {
+	public boolean onCommand(final CommandSender theSender, final Command cmd, final String commandLabel,
+			final String args[]) {
 		if (theSender instanceof Player) {
-			Player player = (Player) theSender;
+			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("rteleport") || commandLabel.equalsIgnoreCase("rtp")) { //If player typed in "/rteleport"
 				if (player.hasPermission("myfirstplugin.rteleport")) { //Check if the player has perms:
-					int randomX = (int) (Math.random() * 20000 - 10000); //x coordinate = A random integer from -10000 to 10000
-					int randomZ = (int) (Math.random() * 20000 - 10000); //z coordinate = A random integer from -10000 to 10000
-					int randomY = player.getWorld().getHighestBlockYAt(randomX, randomZ); //y coordinate = The highest block at the x and z coordinates. Guarantees that the player doesn't teleport in the ground.
-					Location randomLocation = new Location(player.getWorld(), randomX, randomY, randomZ);
-					Material blockUnderneath = randomLocation.getBlock().getRelative(BlockFace.DOWN).getType();	//Gets the block that the player will tp to, then gets the block directly beneath it.
+					final int randomX = (int) (Math.random() * 20000 - 10000); //x coordinate = A random integer from -10000 to 10000
+					final int randomZ = (int) (Math.random() * 20000 - 10000); //z coordinate = A random integer from -10000 to 10000
+					final int randomY = player.getWorld().getHighestBlockYAt(randomX, randomZ); //y coordinate = The highest block at the x and z coordinates. Guarantees that the player doesn't teleport in the ground.
+					final Location randomLocation = new Location(player.getWorld(), randomX, randomY, randomZ);
+					final Material blockUnderneath = randomLocation.getBlock().getRelative(BlockFace.DOWN).getType();	//Gets the block that the player will tp to, then gets the block directly beneath it.
 					if (blockUnderneath == Material.STATIONARY_WATER || blockUnderneath == Material.STATIONARY_LAVA) { //If the block underneath the player is water or lava
 						player.getPlayer().getServer().dispatchCommand(player, "rtp");	//Forces the player to run the command again.
 					} else {	//If the block underneath is not water or lava, tp the player:
@@ -37,5 +38,4 @@ public class RTeleportCommand implements CommandExecutor {
 		}
 		return true;
 	}
-
 }

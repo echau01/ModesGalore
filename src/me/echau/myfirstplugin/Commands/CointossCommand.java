@@ -8,9 +8,10 @@ import org.bukkit.entity.Player;
 
 public class CointossCommand implements CommandExecutor {
 	@Override
-	public boolean onCommand(CommandSender theSender, Command cmd, String commandLabel, String args[]) {
+	public boolean onCommand(final CommandSender theSender, final Command cmd, final String commandLabel,
+			final String args[]) {
 		if (theSender instanceof Player) {
-			Player player = (Player) theSender;
+			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("cointoss")) {
 				if (player.hasPermission("myfirstplugin.cointoss")) {
 					if (args.length == 1) {

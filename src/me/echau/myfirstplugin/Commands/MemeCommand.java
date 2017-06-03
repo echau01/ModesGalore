@@ -17,17 +17,18 @@ import me.echau.myfirstplugin.Main;
 public class MemeCommand implements CommandExecutor {
 	private final Main plugin;
 
-	public MemeCommand(Main plugin) {
+	public MemeCommand(final Main plugin) {
 		this.plugin = plugin;
 	}
 
 	@Override
-	public boolean onCommand(CommandSender theSender, Command cmd, String commandLabel, String args[]) {
+	public boolean onCommand(final CommandSender theSender, final Command cmd, final String commandLabel,
+			final String args[]) {
 		if (theSender instanceof Player) {
-			Player player = (Player) theSender;
+			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("meme")) {
 				if (player.hasPermission("myfirstplugin.meme")) {
-					File memeFile = new File(plugin.getDataFolder(), "memes.txt");
+					final File memeFile = new File(plugin.getDataFolder(), "memes.txt");
 					try (
 						BufferedReader lineCounter = new BufferedReader(new FileReader(memeFile));
 						BufferedReader reader = new BufferedReader(new FileReader(memeFile))

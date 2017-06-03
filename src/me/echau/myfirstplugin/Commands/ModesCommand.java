@@ -12,14 +12,15 @@ import me.echau.myfirstplugin.Main;
 public class ModesCommand implements CommandExecutor {
 	private final Main plugin;
 
-	public ModesCommand(Main plugin) {
+	public ModesCommand(final Main plugin) {
 		this.plugin = plugin;
 	}
 
 	@Override
-	public boolean onCommand(CommandSender theSender, Command cmd, String cmdLabel, String[] args) {
+	public boolean onCommand(final CommandSender theSender, final Command cmd, final String cmdLabel,
+			final String[] args) {
 		if (theSender instanceof Player) {
-			Player player = (Player) theSender;
+			final Player player = (Player) theSender;
 			if (cmdLabel.equalsIgnoreCase("modes")) {
 				if (player.hasPermission("myfirstplugin.modes")) {
 					if (args.length == 0) {
@@ -54,7 +55,7 @@ public class ModesCommand implements CommandExecutor {
 					} else if (args.length == 1) {
 						if (player.hasPermission("myfirstplugin.modes.player")) {
 							if (Bukkit.getPlayer(args[0]) != null) {
-								Player targetPlayer = Bukkit.getPlayer(args[0]);
+								final Player targetPlayer = Bukkit.getPlayer(args[0]);
 								boolean modeFound = false;
 								if (plugin.getConfig().getBoolean("uuids." + targetPlayer.getUniqueId() + ".EnableFarts")) {
 									player.sendMessage(ChatColor.RED + targetPlayer.getName() + ChatColor.GOLD + " has " + ChatColor.GREEN + "Farts Mode " + ChatColor.GOLD + "enabled!");

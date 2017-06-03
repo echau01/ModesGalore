@@ -9,13 +9,13 @@ import me.echau.myfirstplugin.Main;
 public class AntiExplosionOfEntities implements Listener {
 	private final Main plugin;
 	
-	public AntiExplosionOfEntities(Main plugin) {
+	public AntiExplosionOfEntities(final Main plugin) {
 		this.plugin = plugin;
 	}
 	
 	//Explosions created by Bukkit.getServer().createExplosion() do NOT trigger EntityExplodeEvent!
 	@EventHandler
-	public void onExplosion(EntityExplodeEvent event) {
+	public void onExplosion(final EntityExplodeEvent event) {
 		if (plugin.getConfig().getBoolean("AntiExplosionOfEntities")) {
 			event.setCancelled(true);
 		}

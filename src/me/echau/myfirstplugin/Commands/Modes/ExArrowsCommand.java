@@ -10,16 +10,17 @@ import org.bukkit.entity.Player;
 import me.echau.myfirstplugin.Main;
 
 public class ExArrowsCommand implements CommandExecutor {
-
-	Main plugin;
-	public ExArrowsCommand(Main plugin) {
+	private final Main plugin;
+	
+	public ExArrowsCommand(final Main plugin) {
 		this.plugin = plugin;
 	}
 	
 	@Override
-	public boolean onCommand(CommandSender theSender, Command cmd, String commandLabel, String[] args) {
+	public boolean onCommand(final CommandSender theSender, final Command cmd, final String commandLabel,
+			final String[] args) {
 		if (theSender instanceof Player) {
-			Player player = (Player) theSender;
+			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("exarrows")) {
 				if (player.hasPermission("myfirstplugin.exarrows")) {
 					if (args.length == 0) {
@@ -43,7 +44,7 @@ public class ExArrowsCommand implements CommandExecutor {
 						}
 					} else if (args.length == 1) {
 						if (player.hasPermission("myfirstplugin.exarrows.player")) {
-							Player playerBeingToggled = Bukkit.getPlayer(args[0]);
+							final Player playerBeingToggled = Bukkit.getPlayer(args[0]);
 							if (playerBeingToggled != null) {
 								if (!plugin.getConfig().contains("uuids." + playerBeingToggled.getUniqueId() + ".ExArrows")) {
 									plugin.getConfig().set("uuids." + playerBeingToggled.getUniqueId() + ".ExArrows", true);

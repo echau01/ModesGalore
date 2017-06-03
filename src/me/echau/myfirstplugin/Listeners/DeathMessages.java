@@ -29,24 +29,20 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 public class DeathMessages implements Listener {
 	//Player killed by entities
 	@EventHandler
-	public void onPlayerDeathByEntity(EntityDamageByEntityEvent event) {
+	public void onPlayerDeathByEntity(final EntityDamageByEntityEvent event) {
 		if (event.getEntity() instanceof Player) {
-			Player player = (Player) event.getEntity();
+			final Player player = (Player) event.getEntity();
 			if (player.getGameMode() == GameMode.SURVIVAL) {
 				if (player.getHealth() <= event.getDamage()) {
-					DamageCause cause = player.
-							getLastDamageCause()
-							.getCause();
-					
+					final DamageCause cause = player.getLastDamageCause().getCause();
 					if (cause.equals(DamageCause.ENTITY_ATTACK)) {
 						//player.getKiller() always returns a Player -- if it returns null, that means the player did not die by another player
 						if (player.getKiller() != null) {
-							Player killer = player.getKiller();
+							final Player killer = player.getKiller();
 							Bukkit.getServer().broadcastMessage(ChatColor.RED + player.getName() + ChatColor.GOLD + " was slain by " + ChatColor.RED + killer.getName() + ChatColor.GOLD + ".");
 						} else {
 							Bukkit.getServer().broadcastMessage(ChatColor.RED + player.getName() + ChatColor.GOLD + " was killed by a " + ChatColor.RED + event.getDamager().getName() + ChatColor.GOLD + ".");
 						}
-
 					} else if (event.getDamager() instanceof WitherSkull || event.getDamager() instanceof Wither) {
 						Bukkit.getServer().broadcastMessage(ChatColor.RED + player.getName() + ChatColor.GOLD + " got blown up by the " + ChatColor.RED + "Wither" + ChatColor.GOLD + ".");
 					} else if (event.getDamager() instanceof Creeper) {
@@ -57,11 +53,10 @@ public class DeathMessages implements Listener {
 						Bukkit.getServer().broadcastMessage(ChatColor.RED + player.getName() + ChatColor.GOLD + " got blown up by " + ChatColor.RED + "TNT" + ChatColor.GOLD + ".");
 					} else if (event.getDamager() instanceof EnderCrystal) {
 						Bukkit.getServer().broadcastMessage(ChatColor.RED + player.getName() + ChatColor.GOLD + " got blown up by an " + ChatColor.RED + "EnderCrystal" + ChatColor.GOLD + ".");
-
 					} else if (cause.equals(DamageCause.PROJECTILE)) {
-						Projectile proj = (Projectile) event.getDamager();
+						final Projectile proj = (Projectile) event.getDamager();
 						if (proj.getShooter() instanceof Player) {
-							Player killer = (Player) proj.getShooter();
+							final Player killer = (Player) proj.getShooter();
 							if (proj instanceof Fireball || proj instanceof LargeFireball || proj instanceof SmallFireball) {
 								Bukkit.getServer().broadcastMessage(ChatColor.RED + player.getName() + ChatColor.GOLD + " fell by the fireball of " + ChatColor.RED + killer.getName() + ChatColor.GOLD + ".");
 							} else if (proj instanceof Arrow) {
@@ -86,11 +81,10 @@ public class DeathMessages implements Listener {
 
 	//Player killed by non-entities (e.g. falling dmg)
 	@EventHandler
-	public void onPlayerDeath(PlayerDeathEvent event) {
-
-		Player player = event.getEntity();
+	public void onPlayerDeath(final PlayerDeathEvent event) {
+		final Player player = event.getEntity();
 		if (player.getLastDamageCause() != null) {
-			DamageCause cause = player.getLastDamageCause().getCause();
+			final DamageCause cause = player.getLastDamageCause().getCause();
 			if (cause.equals(DamageCause.BLOCK_EXPLOSION)) {
 				Bukkit.getServer().broadcastMessage(ChatColor.RED + player.getName() + ChatColor.GOLD + " blew up into bits and pieces.");
 			} else if (cause.equals(DamageCause.CONTACT)) {
@@ -142,7 +136,7 @@ public class DeathMessages implements Listener {
 
 	//Remove Minecraft's default death messages
 	@EventHandler
-	public void removeDeathMessage(PlayerDeathEvent event) {
+	public void removeDeathMessage(final PlayerDeathEvent event) {
 		event.setDeathMessage("");
 	}
 }

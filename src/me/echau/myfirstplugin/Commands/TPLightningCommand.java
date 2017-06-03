@@ -11,15 +11,16 @@ import org.bukkit.entity.Player;
 
 public class TPLightningCommand implements CommandExecutor {
 	@Override
-	public boolean onCommand(CommandSender theSender, Command cmd, String commandLabel, String args[]) {
+	public boolean onCommand(final CommandSender theSender, final Command cmd, final String commandLabel,
+			final String args[]) {
 		if (theSender instanceof Player) {
-			Player player = (Player) theSender;
+			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("tplightning") || commandLabel.equalsIgnoreCase("tpl")) {
 				if (player.hasPermission("myfirstplugin.tplightning")) {
 					if (args.length == 1) {
-						Player targetPlayer = Bukkit.getPlayer(args[0]);
+						final Player targetPlayer = Bukkit.getPlayer(args[0]);
 						if (targetPlayer != null) {
-							Location teleportLocation = new Location(targetPlayer.getWorld(), targetPlayer.getLocation().getX(), targetPlayer.getLocation().getY(), targetPlayer.getLocation().getZ());
+							final Location teleportLocation = new Location(targetPlayer.getWorld(), targetPlayer.getLocation().getX(), targetPlayer.getLocation().getY(), targetPlayer.getLocation().getZ());
 							player.teleport(teleportLocation);
 							player.sendMessage(ChatColor.GOLD + "Teleported to " + ChatColor.RED + targetPlayer.getName() + ChatColor.GOLD + " and struck them with lightning!");
 							player.getWorld().strikeLightningEffect(teleportLocation);	//Does not actually do any damage or set fire. Use strikeLightning(Location) if you want to do damage and set fire. 
@@ -42,5 +43,4 @@ public class TPLightningCommand implements CommandExecutor {
 		}
 		return true;
 	}
-
 }

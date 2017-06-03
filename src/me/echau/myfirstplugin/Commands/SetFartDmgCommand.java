@@ -11,14 +11,15 @@ import me.echau.myfirstplugin.Main;
 public class SetFartDmgCommand implements CommandExecutor {
 	private final Main plugin;
 	
-	public SetFartDmgCommand(Main plugin) {
+	public SetFartDmgCommand(final Main plugin) {
 		this.plugin = plugin;
 	}
 	
 	@Override
-	public boolean onCommand(CommandSender theSender, Command cmd, String commandLabel, String args[]) {
+	public boolean onCommand(final CommandSender theSender, final Command cmd, final String commandLabel,
+			final String args[]) {
 		if (theSender instanceof Player) {
-			Player player = (Player) theSender;
+			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("setfartdmg")) {
 				if (player.hasPermission("myfirstplugin.setfartdmg")) {
 					if (args.length == 1) {

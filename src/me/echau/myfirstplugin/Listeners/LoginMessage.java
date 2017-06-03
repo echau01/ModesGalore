@@ -15,33 +15,31 @@ import me.echau.myfirstplugin.Main;
 public class LoginMessage implements Listener {
 	private final Main plugin;
 	
-	public LoginMessage(Main plugin) {
+	public LoginMessage(final Main plugin) {
 		this.plugin = plugin;
 	}
 	
 	@EventHandler
-	public void sendLoginMessage(PlayerJoinEvent event) {
-		Player player = event.getPlayer(); 
+	public void sendLoginMessage(final PlayerJoinEvent event) {
+		final Player player = event.getPlayer(); 
 		player.sendMessage(ChatColor.RED + "[MyFirstPlugin] " + ChatColor.GOLD + "MyFirstPlugin v1.0 enabled.");
-		Collection<Player> players = new ArrayList<Player>(Bukkit.getServer().getOnlinePlayers());
+		final Collection<Player> players = new ArrayList<Player>(Bukkit.getServer().getOnlinePlayers());
 		
 		//Set up individual config path for each player if none exists already.
 		if (!plugin.getConfig().contains("uuids." + player.getUniqueId().toString())){
 			plugin.getConfig().set("uuids." + player.getUniqueId().toString() + ".name", player.getName());
 			plugin.saveConfig();
 			plugin.reloadConfig();
-			for(Player onlinePlayer : players) {
+			for (final Player onlinePlayer : players) {
 				onlinePlayer.sendMessage(ChatColor.AQUA + "Please welcome " + ChatColor.GOLD + player.getName() + ChatColor.AQUA + " to the server!");
 			}
-
-		//In case of name changes:
-		} else {
+		} else {	//In case of name changes
 			if (!plugin.getConfig().getString("uuids." + player.getUniqueId().toString() + ".name").equalsIgnoreCase(player.getName())) {
 				plugin.getConfig().set("uuids." + player.getUniqueId().toString() + ".name", player.getName());
 				plugin.saveConfig();
 				plugin.reloadConfig();
 			}
-			for (Player onlinePlayer : players) {
+			for (final Player onlinePlayer : players) {
 				onlinePlayer.sendMessage(ChatColor.RED + "Welcome back " + ChatColor.GOLD + player.getName() + ChatColor.RED + " to the server!");
 			}
 		}

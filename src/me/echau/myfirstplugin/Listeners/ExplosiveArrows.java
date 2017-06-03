@@ -12,17 +12,17 @@ import me.echau.myfirstplugin.Main;
 public class ExplosiveArrows implements Listener {
 	private final Main plugin;
 	
-	public ExplosiveArrows(Main plugin) {
+	public ExplosiveArrows(final Main plugin) {
 		this.plugin = plugin;
 	}
 	
 	@EventHandler
-	public void explodeArrows(ProjectileHitEvent event) {
+	public void explodeArrows(final ProjectileHitEvent event) {
 		if (event.getEntity() instanceof Arrow) {
 			if (event.getEntity().getShooter() instanceof Player) {
-				Player player = (Player) event.getEntity().getShooter();
+				final Player player = (Player) event.getEntity().getShooter();
 				if (plugin.getConfig().getBoolean("uuids." + player.getUniqueId().toString() + ".ExArrows")) {
-					Location loc = event.getEntity().getLocation();
+					final Location loc = event.getEntity().getLocation();
 					event.getEntity().remove();
 					event.getEntity().getWorld().createExplosion(loc, 4F);
 				}

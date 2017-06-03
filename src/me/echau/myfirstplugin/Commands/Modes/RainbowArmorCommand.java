@@ -10,15 +10,17 @@ import org.bukkit.entity.Player;
 import me.echau.myfirstplugin.Main;
 
 public class RainbowArmorCommand implements CommandExecutor {
-	Main plugin;
-	public RainbowArmorCommand(Main plugin) {
+	private final Main plugin;
+	
+	public RainbowArmorCommand(final Main plugin) {
 		this.plugin = plugin;
 	}
 	
 	@Override
-	public boolean onCommand(CommandSender theSender, Command cmd, String commandLabel, String[] args) {
+	public boolean onCommand(final CommandSender theSender, final Command cmd, final String commandLabel,
+			final String[] args) {
 		if (theSender instanceof Player) {
-			Player player = (Player) theSender;
+			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("rainbowarmor") || commandLabel.equalsIgnoreCase("rarmor")) {
 				if (player.hasPermission("myfirstplugin.rainbowarmor")) {
 					if (args.length == 0) {
@@ -42,7 +44,7 @@ public class RainbowArmorCommand implements CommandExecutor {
 						}
 					} else if (args.length == 1) {
 						if (player.hasPermission("myfirstplugin.rainbowarmor.player")) {
-							Player playerBeingToggled = Bukkit.getPlayer(args[0]);
+							final Player playerBeingToggled = Bukkit.getPlayer(args[0]);
 							if (playerBeingToggled != null) {
 								if (!plugin.getConfig().contains("uuids." + playerBeingToggled.getUniqueId() + ".RainbowArmor")) {
 									plugin.getConfig().set("uuids." + playerBeingToggled.getUniqueId() + ".RainbowArmor", true);

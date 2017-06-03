@@ -12,19 +12,19 @@ import me.echau.myfirstplugin.Main;
 public class WalkOnSmoke implements Runnable {
 	private final Main plugin;
 	
-	public WalkOnSmoke(Main plugin) {
+	public WalkOnSmoke(final Main plugin) {
 		this.plugin = plugin;
 	}
 	
 	@Override
 	public void run() {
-		for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+		for (final Player player : Bukkit.getServer().getOnlinePlayers()) {
 			if (plugin.getConfig().getBoolean("uuids." + player.getUniqueId() + ".WalkOnSmokeMode")) {
 				if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR) {
-					double x = player.getLocation().getX();
-					double y = player.getLocation().getY() - 1;
-					double z = player.getLocation().getZ();
-					Location loc = new Location(player.getWorld(), x, y, z);
+					final double x = player.getLocation().getX();
+					final double y = player.getLocation().getY() - 1;
+					final double z = player.getLocation().getZ();
+					final Location loc = new Location(player.getWorld(), x, y, z);
 					for (int i = 0; i <= 8; i++) {
 						player.getWorld().playEffect(loc, Effect.SMOKE, i);
 					}

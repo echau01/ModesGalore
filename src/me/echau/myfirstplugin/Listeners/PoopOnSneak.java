@@ -30,39 +30,34 @@ public class PoopOnSneak implements Listener {
 	 * List of poop blocks. When all of a player's poop blocks have landed, the mapping of the 
 	 * List of poop blocks to the player UUID is removed.
 	 */
-	private static Map<List<FallingBlock>, UUID> poopToPlayerUUID = 
+	private static final Map<List<FallingBlock>, UUID> POOP_TO_PLAYER_UUID = 
 			new HashMap<List<FallingBlock>, UUID>();
 	
-	public PoopOnSneak(Main plugin) {
+	public PoopOnSneak(final Main plugin) {
 		this.plugin = plugin;
 	}
 	
-	/* For classes using getPoopToPlayerUUID() method */
-	public PoopOnSneak() {
-		this.plugin = null;
-	}
-	
 	@EventHandler
-	public void onSneak(PlayerToggleSneakEvent event) {
-		Player player = event.getPlayer();
+	public void onSneak(final PlayerToggleSneakEvent event) {
+		final Player player = event.getPlayer();
 		if (event.isSneaking()) {
 			if (plugin.getConfig().getBoolean("uuids." + player.getUniqueId() 
 					+ ".EnablePooping")) {
-				List<FallingBlock> poopBlocks = new ArrayList<FallingBlock>();
+				final List<FallingBlock> poopBlocks = new ArrayList<FallingBlock>();
 				for (int i = 0; i < 10; i++) {
 					@SuppressWarnings("deprecation")
-					FallingBlock poop = player.getWorld().spawnFallingBlock(player.getLocation(), 
+					final FallingBlock poop = player.getWorld().spawnFallingBlock(player.getLocation(), 
 							Material.WOOL, (byte) 12);
 					poopBlocks.add(poop);
 					poop.setDropItem(false);
-					Vector initVec = player.getLocation().getDirection()
+					final Vector initVec = player.getLocation().getDirection()
 							.multiply(-(Math.random() * 5));
-					Vector finalVec = initVec.setX(initVec.getX() * Math.random())
+					final Vector finalVec = initVec.setX(initVec.getX() * Math.random())
 							.setY(initVec.getY() * Math.random())
 							.setZ(initVec.getZ() * Math.random());
 					poop.setVelocity(finalVec);
 				}
-				poopToPlayerUUID.put(poopBlocks, player.getUniqueId());
+				POOP_TO_PLAYER_UUID.put(poopBlocks, player.getUniqueId());
 			}
 		}
 	}
@@ -74,11 +69,11 @@ public class PoopOnSneak implements Listener {
 	 * be a fix for this.
 	 */
 	@EventHandler
-	public void onPoopFall(EntityChangeBlockEvent event) {
+	public void onPoopFall(final EntityChangeBlockEvent event) {
 		if (event.getEntity() instanceof FallingBlock) {
-			FallingBlock poop = (FallingBlock) event.getEntity();
+			final FallingBlock poop = (FallingBlock) event.getEntity();
 			List<FallingBlock> poopBlocks = new ArrayList<FallingBlock>();
-			Iterator<Map.Entry<List<FallingBlock>, UUID>> it = poopToPlayerUUID.entrySet()
+			final Iterator<Map.Entry<List<FallingBlock>, UUID>> it = POOP_TO_PLAYER_UUID.entrySet()
 					.iterator();
 			while (it.hasNext()) {
 				if ((poopBlocks = it.next().getKey()).contains(event.getEntity())) {
@@ -87,14 +82,10 @@ public class PoopOnSneak implements Listener {
 				}
 			}
 			if (poopBlocks.isEmpty()) {
-				poopToPlayerUUID.remove(poopBlocks);
+				POOP_TO_PLAYER_UUID.remove(poopBlocks);
 			}
 			poop.getWorld().playEffect(poop.getLocation(), Effect.STEP_SOUND, 35);
 			event.setCancelled(true);
 		}
-	}
-	
-	public static Map<List<FallingBlock>, UUID> getPoopToPlayerUUID() {
-		return poopToPlayerUUID;
 	}
 }

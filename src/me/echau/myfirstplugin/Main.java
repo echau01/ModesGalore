@@ -44,7 +44,6 @@ public class Main extends JavaPlugin {
 		this.getCommand("reverse").setExecutor(new ReverseCommand());
 		this.getCommand("rteleport").setExecutor(new RTeleportCommand());
 		this.getCommand("rtp").setExecutor(new RTeleportCommand());
-		this.getCommand("seeyoulater").setExecutor(new SeeYouLaterCommand());
 		this.getCommand("setfartdmg").setExecutor(new SetFartDmgCommand(this));
 		this.getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
 		this.getCommand("spawn").setExecutor(new SpawnCommand(this));
@@ -83,13 +82,11 @@ public class Main extends JavaPlugin {
 	}
 
 	@Override
-	public void onDisable() {
-
-	}
+	public void onDisable() {}
 
 	//Creates config if one does not exist already.
 	public void loadConfig() {
-		File configFile = new File(getDataFolder(), "config.yml");
+		final File configFile = new File(getDataFolder(), "config.yml");
 		if (!configFile.exists()) {
 			this.saveConfig();
 			this.configSetDefaults();
@@ -131,7 +128,7 @@ public class Main extends JavaPlugin {
 	 * and output a "meme" from the default lines).
 	 */
 	public void createMemeFile() {
-		File memeFile = new File(getDataFolder(), "memes.txt");
+		final File memeFile = new File(getDataFolder(), "memes.txt");
 		try {
 			if (memeFile.createNewFile()) {
 				Bukkit.getLogger().info("[MyFirstPlugin] File memes.txt not found! Creating memes.txt");
@@ -145,7 +142,7 @@ public class Main extends JavaPlugin {
 				) {
 					//Represents the number of lines in the memes.txt file, including the default lines.
 					int numLines = 0;
-
+					
 					//Reads through all the lines and counts them.
 					while (lineCounter.readLine() != null) {
 						numLines++;
@@ -161,7 +158,7 @@ public class Main extends JavaPlugin {
 						this.writeMemeFileDefaults();
 					} else {
 						//List of all the lines in the memes.txt file.
-						String[] fileLines = new String[numLines];
+						final String[] fileLines = new String[numLines];
 						
 						//Re-reads all of the lines with a second reader
 						//Adds each line's contents to the fileLines list.
@@ -183,7 +180,7 @@ public class Main extends JavaPlugin {
 						//Do not declare it along with the readers in the try-with-resources statement.
 						try (BufferedWriter writer = new BufferedWriter(new FileWriter(memeFile))) {
 							int lineNumber = 1;
-							for (String s : fileLines) {
+							for (final String s : fileLines) {
 								if (lineNumber == 1) {
 									writer.write(s);
 									lineNumber++;
@@ -225,7 +222,7 @@ public class Main extends JavaPlugin {
 	//Writes default lines in memes.txt file.
 	//These lines are written at the top of the file.
 	public void writeMemeFileDefaults() {
-		File memeFile = new File(getDataFolder(), "memes.txt");
+		final File memeFile = new File(getDataFolder(), "memes.txt");
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(memeFile))) {
 			writer.write("**********IMPORTANT DO NOT DELETE, YOU WILL LOSE MEMES IF YOU DO**********");
 			writer.newLine();

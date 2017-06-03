@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class OreLogsAlmostCleared implements Runnable {
 	@Override
 	public void run() {
-		for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+		for (final Player player : Bukkit.getServer().getOnlinePlayers()) {
 			if (player.hasPermission("myfirstplugin.vieworelogs")) {
 				player.sendMessage(ChatColor.RED + "OreLogs are being cleared in 5 minutes! View them with /orelogs <player>");
 			}

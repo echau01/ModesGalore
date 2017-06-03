@@ -17,12 +17,10 @@ public class ClearOreLogs implements Runnable {
 		MineOreMessage.getIronHashMap().clear();
 		MineOreMessage.getLapisHashMap().clear();
 		MineOreMessage.getQuartzHashMap().clear();
-
-		for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+		for (final Player player : Bukkit.getServer().getOnlinePlayers()) {
 			if (player.hasPermission("myfirstplugin.vieworelogs")) {
 				player.sendMessage(ChatColor.RED + "OreLogs have been cleared!");
 			}
 		}
 	}
-
 }

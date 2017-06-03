@@ -12,24 +12,25 @@ import me.echau.myfirstplugin.Main;
 public class SetSpawnCommand implements CommandExecutor {
 	private final Main plugin;
 	
-	public SetSpawnCommand(Main plugin) {
+	public SetSpawnCommand(final Main plugin) {
 		this.plugin = plugin;
 	}
 	
 	@Override
-	public boolean onCommand(CommandSender theSender, Command cmd, String commandLabel, String args[]) {
+	public boolean onCommand(final CommandSender theSender, final Command cmd, final String commandLabel,
+			final String args[]) {
 		if (theSender instanceof Player) {
-			Player player = (Player) theSender;
+			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("setspawn")) {
 				if (player.hasPermission("myfirstplugin.setspawn")) {
 					if (args.length == 0) {
-						Location spawnLocation = player.getLocation();
-						String world = player.getWorld().getName();
-						double x = spawnLocation.getX();
-						double y = spawnLocation.getY();
-						double z = spawnLocation.getZ();
-						float yaw = spawnLocation.getYaw();
-						float pitch = spawnLocation.getPitch();
+						final Location spawnLocation = player.getLocation();
+						final String world = player.getWorld().getName();
+						final double x = spawnLocation.getX();
+						final double y = spawnLocation.getY();
+						final double z = spawnLocation.getZ();
+						final float yaw = spawnLocation.getYaw();
+						final float pitch = spawnLocation.getPitch();
 						plugin.getConfig().set("spawnlocation." + world + ".world", world);	//MULTIWORLD SPAWNS!
 						plugin.getConfig().set("spawnlocation." + world + ".x", x);
 						plugin.getConfig().set("spawnlocation." + world + ".y", y + 0.5);
@@ -51,5 +52,4 @@ public class SetSpawnCommand implements CommandExecutor {
 		}
 		return true;
 	}
-
 }

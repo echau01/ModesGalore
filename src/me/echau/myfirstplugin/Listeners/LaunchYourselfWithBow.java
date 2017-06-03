@@ -1,6 +1,7 @@
 package me.echau.myfirstplugin.Listeners;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -18,20 +19,20 @@ import me.echau.myfirstplugin.Main;
 public class LaunchYourselfWithBow implements Listener {
 	private final Main plugin;
 	
-	public LaunchYourselfWithBow(Main plugin) {
+	//To cancel fall damage - represents players who are in the air after launch
+	private final List<String> isBeingLaunched = new ArrayList<String>();
+	
+	public LaunchYourselfWithBow(final Main plugin) {
 		this.plugin = plugin;
 	}
-	
-	//To cancel fall damage - represents players who are in the air after launch
-	ArrayList<String> isBeingLaunched = new ArrayList<String>();
 
 	@EventHandler
-	public void onArrowShoot(EntityShootBowEvent event) {
+	public void onArrowShoot(final EntityShootBowEvent event) {
 		if (event.getEntity() instanceof Player) {
-			Player player = (Player) event.getEntity();
+			final Player player = (Player) event.getEntity();
 			if (plugin.getConfig().getBoolean("uuids." + player.getUniqueId().toString() + ".LaunchMode")) {
-				Vector arrowVelocity = event.getProjectile().getVelocity();
-				Vector playerVelocity = arrowVelocity.multiply(3);
+				final Vector arrowVelocity = event.getProjectile().getVelocity();
+				final Vector playerVelocity = arrowVelocity.multiply(3);
 				player.setVelocity(playerVelocity);
 				
 				//Add player to isBeingLaunched only if he isn't in there already.
@@ -53,9 +54,9 @@ public class LaunchYourselfWithBow implements Listener {
 
 	//Cancel fall damage from launching yourself
 	@EventHandler
-	public void playerTakesFallDamage(EntityDamageEvent event) {
+	public void playerTakesFallDamage(final EntityDamageEvent event) {
 		if (event.getEntity() instanceof Player) {
-			Player player = (Player) event.getEntity();
+			final Player player = (Player) event.getEntity();
 			if (isBeingLaunched.contains(player.getName())) {
 				if (event.getCause() == DamageCause.FALL) {
 					event.setCancelled(true);

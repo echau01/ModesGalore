@@ -10,15 +10,17 @@ import org.bukkit.entity.Player;
 import me.echau.myfirstplugin.Main;
 
 public class EnablePoopingCommand implements CommandExecutor {
-	final Main plugin;
-	public EnablePoopingCommand(Main plugin) {
+	private final Main plugin;
+	
+	public EnablePoopingCommand(final Main plugin) {
 		this.plugin = plugin;
 	}
 
 	@Override
-	public boolean onCommand(CommandSender theSender, Command cmd, String commandLabel, String[] args) {
+	public boolean onCommand(final CommandSender theSender, final Command cmd, final String commandLabel,
+			final String[] args) {
 		if (theSender instanceof Player) {
-			Player player = (Player) theSender;
+			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("enablepooping") || commandLabel.equalsIgnoreCase("ep")) {
 				if (args.length == 0) {
 					if (player.hasPermission("myfirstplugin.enablepooping")) {
@@ -45,7 +47,7 @@ public class EnablePoopingCommand implements CommandExecutor {
 					}
 				} else if (args.length == 1) {
 					if (player.hasPermission("myfirstplugin.enablepooping.player")) {
-						Player playerBeingToggled = Bukkit.getPlayer(args[0]);
+						final Player playerBeingToggled = Bukkit.getPlayer(args[0]);
 						if (playerBeingToggled != null) {
 							if (!plugin.getConfig().contains("uuids." + playerBeingToggled.getUniqueId() + ".EnablePooping")) {
 								plugin.getConfig().set("uuids." + playerBeingToggled.getUniqueId() + ".EnablePooping", true);
