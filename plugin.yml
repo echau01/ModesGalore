@@ -70,9 +70,6 @@ commands:
   rtp:
     description: Teleports you to a random location. Same as /rteleport
     usage: /rtp
-  seeyoulater:
-    description: SEE YOU LATER!
-    usage: /seeyoulater
   setfartdmg:
     description: Sets the damage of a Fart (produced when sneaking in Farts Mode) to the specified number of hearts.
     usage: /setfartdmg <number of hearts>
