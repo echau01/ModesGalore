@@ -69,23 +69,22 @@ public class PoopOnSneak implements Listener {
 	 * be a fix for this.
 	 */
 	@EventHandler
-	public void onPoopFall(final EntityChangeBlockEvent event) {
+	public void onPoopLand(final EntityChangeBlockEvent event) {
 		if (event.getEntity() instanceof FallingBlock) {
 			final FallingBlock poop = (FallingBlock) event.getEntity();
-			List<FallingBlock> poopBlocks = new ArrayList<FallingBlock>();
-			final Iterator<Map.Entry<List<FallingBlock>, UUID>> it = POOP_TO_PLAYER_UUID.entrySet()
-					.iterator();
-			while (it.hasNext()) {
-				if ((poopBlocks = it.next().getKey()).contains(event.getEntity())) {
-					poopBlocks.remove(poop);
+			List<FallingBlock> poopBlocksList = new ArrayList<FallingBlock>();
+			for (Iterator<List<FallingBlock>> entries = POOP_TO_PLAYER_UUID.keySet().iterator();
+					entries.hasNext();) {
+				if ((poopBlocksList = entries.next()).contains(event.getEntity())) {
+					poopBlocksList.remove(poop);
+					poop.getWorld().playEffect(poop.getLocation(), Effect.STEP_SOUND, 35);
+					event.setCancelled(true);
 					break;
 				}
 			}
-			if (poopBlocks.isEmpty()) {
-				POOP_TO_PLAYER_UUID.remove(poopBlocks);
+			if (poopBlocksList.isEmpty()) {
+				POOP_TO_PLAYER_UUID.remove(poopBlocksList);
 			}
-			poop.getWorld().playEffect(poop.getLocation(), Effect.STEP_SOUND, 35);
-			event.setCancelled(true);
 		}
 	}
 }
