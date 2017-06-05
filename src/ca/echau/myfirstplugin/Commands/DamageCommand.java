@@ -30,7 +30,7 @@ public class DamageCommand implements CommandExecutor {
 									playerToDamage.sendMessage(ChatColor.RED + "You were damaged by " + ChatColor.GOLD + player.getName() + ChatColor.RED + " for " + ChatColor.GOLD + "10" + ChatColor.RED + " hearts!");
 								} else if (damageRounded < 0.5) { //Prevents the specified amount from being too low to make a difference in the player's health
 									player.sendMessage(ChatColor.RED + "Please specify a valid amount between 0.5 hearts and 10 hearts.");
-								} else if (Math.abs(damageRounded - 1) < EPSILON) { //Changes "hearts" to "heart" in the case of 1 heart of dmg being dealt. < should be used instead of == in case of floating point rounding error
+								} else if (damageRounded == 1.0) { //Changes "hearts" to "heart" in the case of 1 heart of dmg being dealt.
 									playerToDamage.damage(2);
 									player.sendMessage(ChatColor.RED + "Damaged " + ChatColor.GOLD + playerToDamage.getName() + ChatColor.RED + " for " + ChatColor.GOLD + "1" + ChatColor.RED + " heart!");
 									playerToDamage.sendMessage(ChatColor.RED + "You were damaged by " + ChatColor.GOLD + player.getName() + ChatColor.RED + " for " + ChatColor.GOLD + "1" + ChatColor.RED + " heart!");
