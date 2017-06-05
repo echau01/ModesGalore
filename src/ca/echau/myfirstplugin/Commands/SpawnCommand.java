@@ -12,11 +12,11 @@ import ca.echau.myfirstplugin.Main;
 
 public class SpawnCommand implements CommandExecutor {
 	private final Main plugin;
-	
+
 	public SpawnCommand(final Main plugin) {
 		this.plugin = plugin;
 	}
-	
+
 	@Override
 	public boolean onCommand(final CommandSender theSender, final Command cmd, final String commandLabel,
 			final String args[]) {
@@ -24,9 +24,9 @@ public class SpawnCommand implements CommandExecutor {
 			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("spawn")) {
 				if (player.hasPermission("myfirstplugin.spawn")) {
-					try {
-						final World world = player.getWorld();
-						final String worldName = world.getName();
+					final World world = player.getWorld();
+					final String worldName = world.getName();
+					if (plugin.getConfig().contains("spawnlocation." + worldName + ".x")) {
 						final double x = plugin.getConfig().getDouble("spawnlocation." + worldName + ".x");
 						final double y = plugin.getConfig().getDouble("spawnlocation." + worldName + ".y");
 						final double z = plugin.getConfig().getDouble("spawnlocation." + worldName + ".z");
@@ -35,10 +35,11 @@ public class SpawnCommand implements CommandExecutor {
 						final Location spawnLocation = new Location(world, x, y, z, yaw, pitch);
 						player.teleport(spawnLocation);
 						player.sendMessage(ChatColor.GOLD + "Teleported to spawn!");
-					} catch (NullPointerException exception) {
-						player.sendMessage(ChatColor.RED + "There is no spawn set! Tell an admin to set the spawn.");
+					} else {
 						if (player.hasPermission("myfirstplugin.setspawn")) {
-							player.sendMessage(ChatColor.RED + "Please relog to set spawn.");
+							player.sendMessage(ChatColor.RED + "There is no spawn set! Please set a spawn with /setspawn");
+						} else {
+							player.sendMessage(ChatColor.RED + "There is no spawn set! Tell an admin to set the spawn.");
 						}
 					}
 				} else {
