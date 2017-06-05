@@ -11,7 +11,7 @@ import ca.echau.myfirstplugin.Main;
 
 public class EnableFartsCommand implements CommandExecutor {
 	private final Main plugin;
-	
+
 	public EnableFartsCommand(final Main plugin) {
 		this.plugin = plugin;
 	}
@@ -22,8 +22,8 @@ public class EnableFartsCommand implements CommandExecutor {
 		if (theSender instanceof Player) {
 			final Player player = (Player) theSender;
 			if (commandLabel.equalsIgnoreCase("enablefarts") || commandLabel.equalsIgnoreCase("ef")) {
-				if (args.length == 0) {
-					if (player.hasPermission("myfirstplugin.enablefarts")) {
+				if (player.hasPermission("myfirstplugin.enablefarts")) {
+					if (args.length == 0) {
 						if (!plugin.getConfig().contains("uuids." + player.getUniqueId() + ".EnableFarts")) {
 							plugin.getConfig().set("uuids." + player.getUniqueId() + ".EnableFarts", true);
 							plugin.saveConfig();
@@ -43,43 +43,43 @@ public class EnableFartsCommand implements CommandExecutor {
 							}
 						}
 						return true;
-					} else {
-						player.sendMessage(ChatColor.RED + "You don't have sufficient permissions!");
-					}
-				} else if (args.length == 1) {
-					if (player.hasPermission("myfirstplugin.enablefarts.player")) {
-						final Player playerBeingToggled = Bukkit.getPlayer(args[0]);
-						if (playerBeingToggled != null) {
-							if (!plugin.getConfig().contains("uuids." + playerBeingToggled.getUniqueId() + ".EnableFarts")) {
-								plugin.getConfig().set("uuids." + playerBeingToggled.getUniqueId() + ".EnableFarts", true);
-								plugin.saveConfig();
-								plugin.reloadConfig();
-								player.sendMessage(ChatColor.GREEN + "Enabled " + ChatColor.AQUA + "Farts mode " + ChatColor.GREEN + "for " + args[0] + ChatColor.AQUA + ".");
-								playerBeingToggled.sendMessage(ChatColor.AQUA + "Farts Mode " + ChatColor.GREEN + "enabled " + ChatColor.AQUA + "by " + ChatColor.GREEN + player.getName() + ChatColor.AQUA + ".");
-							} else {
-								if (!plugin.getConfig().getBoolean("uuids." + playerBeingToggled.getUniqueId() + ".EnableFarts")) {
+					} else if (args.length == 1) {
+						if (player.hasPermission("myfirstplugin.enablefarts.player")) {
+							final Player playerBeingToggled = Bukkit.getPlayer(args[0]);
+							if (playerBeingToggled != null) {
+								if (!plugin.getConfig().contains("uuids." + playerBeingToggled.getUniqueId() + ".EnableFarts")) {
 									plugin.getConfig().set("uuids." + playerBeingToggled.getUniqueId() + ".EnableFarts", true);
 									plugin.saveConfig();
 									plugin.reloadConfig();
-									player.sendMessage(ChatColor.GREEN + "Enabled " + ChatColor.AQUA + "Farts Mode " + ChatColor.GREEN + "for " + args[0] + ChatColor.AQUA + ".");
+									player.sendMessage(ChatColor.GREEN + "Enabled " + ChatColor.AQUA + "Farts mode " + ChatColor.GREEN + "for " + args[0] + ChatColor.AQUA + ".");
 									playerBeingToggled.sendMessage(ChatColor.AQUA + "Farts Mode " + ChatColor.GREEN + "enabled " + ChatColor.AQUA + "by " + ChatColor.GREEN + player.getName() + ChatColor.AQUA + ".");
 								} else {
-									plugin.getConfig().set("uuids." + playerBeingToggled.getUniqueId() + ".EnableFarts", false);
-									plugin.saveConfig();
-									plugin.reloadConfig();
-									player.sendMessage(ChatColor.RED + "Disabled " + ChatColor.AQUA + "Farts Mode " + ChatColor.RED + "for " + args[0] + ChatColor.AQUA + ".");
-									playerBeingToggled.sendMessage(ChatColor.AQUA + "Farts Mode " + ChatColor.RED + "disabled " + ChatColor.AQUA + "by " + ChatColor.RED + player.getName() + ChatColor.AQUA + ".");
+									if (!plugin.getConfig().getBoolean("uuids." + playerBeingToggled.getUniqueId() + ".EnableFarts")) {
+										plugin.getConfig().set("uuids." + playerBeingToggled.getUniqueId() + ".EnableFarts", true);
+										plugin.saveConfig();
+										plugin.reloadConfig();
+										player.sendMessage(ChatColor.GREEN + "Enabled " + ChatColor.AQUA + "Farts Mode " + ChatColor.GREEN + "for " + args[0] + ChatColor.AQUA + ".");
+										playerBeingToggled.sendMessage(ChatColor.AQUA + "Farts Mode " + ChatColor.GREEN + "enabled " + ChatColor.AQUA + "by " + ChatColor.GREEN + player.getName() + ChatColor.AQUA + ".");
+									} else {
+										plugin.getConfig().set("uuids." + playerBeingToggled.getUniqueId() + ".EnableFarts", false);
+										plugin.saveConfig();
+										plugin.reloadConfig();
+										player.sendMessage(ChatColor.RED + "Disabled " + ChatColor.AQUA + "Farts Mode " + ChatColor.RED + "for " + args[0] + ChatColor.AQUA + ".");
+										playerBeingToggled.sendMessage(ChatColor.AQUA + "Farts Mode " + ChatColor.RED + "disabled " + ChatColor.AQUA + "by " + ChatColor.RED + player.getName() + ChatColor.AQUA + ".");
+									}
 								}
+								return true;
+							} else {
+								player.sendMessage(ChatColor.RED + "Could not find the player " + ChatColor.DARK_RED + args[0] + ChatColor.RED + "!");
 							}
-							return true;
 						} else {
-							player.sendMessage(ChatColor.RED + "Could not find the player " + ChatColor.DARK_RED + args[0] + ChatColor.RED + "!");
+							player.sendMessage(ChatColor.RED + "You don't have sufficient permissions!");
 						}
 					} else {
-						player.sendMessage(ChatColor.RED + "You don't have sufficient permissions!");
+						player.sendMessage(ChatColor.RED + "Incorrect arguments! Command usage: /enablefarts [player]");
 					}
 				} else {
-					player.sendMessage(ChatColor.RED + "Incorrect arguments! Command usage: /enablefarts [player]");
+					player.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
 				}
 			}
 		}
