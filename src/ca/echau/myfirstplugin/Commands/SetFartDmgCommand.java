@@ -32,6 +32,8 @@ public class SetFartDmgCommand implements CommandExecutor {
 					} else {
 						player.sendMessage(ChatColor.RED + "Invalid arguments! Command usage: /setfartdmg <number of hearts>");
 					}
+				} else {
+					player.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
 				}
 			}
 		}
