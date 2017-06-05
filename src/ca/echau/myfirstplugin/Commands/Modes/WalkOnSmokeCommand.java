@@ -42,6 +42,7 @@ public class WalkOnSmokeCommand implements CommandExecutor {
 								player.sendMessage(ChatColor.AQUA + "WalkOnSmoke Mode " + ChatColor.RED + "disabled.");
 							}
 						}
+						return true;
 					} else {
 						player.sendMessage(ChatColor.RED + "You don't have sufficient permissions!");
 					}
@@ -70,6 +71,7 @@ public class WalkOnSmokeCommand implements CommandExecutor {
 									playerBeingToggled.sendMessage(ChatColor.AQUA + "WalkOnSmoke Mode " + ChatColor.RED + "disabled " + ChatColor.AQUA + "by " + ChatColor.RED + player.getName() + ChatColor.AQUA + ".");
 								}
 							}
+							return true;
 						} else {
 							player.sendMessage(ChatColor.RED + "Could not find the player " + ChatColor.DARK_RED + args[0] + ChatColor.RED + "!");
 						}
@@ -81,6 +83,6 @@ public class WalkOnSmokeCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

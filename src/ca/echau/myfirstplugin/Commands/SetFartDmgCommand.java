@@ -29,6 +29,7 @@ public class SetFartDmgCommand implements CommandExecutor {
 						plugin.reloadConfig();
 						player.sendMessage(ChatColor.GOLD + "Set the damage of a fart to " 
 							+ ChatColor.RED + numHearts + ChatColor.GOLD + " hearts.");
+						return true;
 					} else {
 						player.sendMessage(ChatColor.RED + "Invalid arguments! Command usage: /setfartdmg <number of hearts>");
 					}
@@ -37,6 +38,6 @@ public class SetFartDmgCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

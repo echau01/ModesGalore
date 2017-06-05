@@ -42,6 +42,7 @@ public class ExArrowsCommand implements CommandExecutor {
 								player.sendMessage(ChatColor.AQUA + "Explosive Arrows " + ChatColor.RED + "disabled.");
 							}
 						}
+						return true;
 					} else if (args.length == 1) {
 						if (player.hasPermission("myfirstplugin.exarrows.player")) {
 							final Player playerBeingToggled = Bukkit.getPlayer(args[0]);
@@ -67,6 +68,7 @@ public class ExArrowsCommand implements CommandExecutor {
 										playerBeingToggled.sendMessage(ChatColor.AQUA + "Explosive Arrows " + ChatColor.RED + "disabled " + ChatColor.AQUA + "by " + ChatColor.RED + player.getName() + ChatColor.AQUA + ".");
 									}
 								}
+								return true;
 							} else {
 								player.sendMessage(ChatColor.RED + "Could not find the player " + ChatColor.DARK_RED + args[0] + ChatColor.RED + "!");
 							}
@@ -81,6 +83,6 @@ public class ExArrowsCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

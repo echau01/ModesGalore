@@ -42,6 +42,7 @@ public class SetSpawnCommand implements CommandExecutor {
 						player.sendMessage(ChatColor.GOLD + "Set spawn at X: " + ChatColor.RED + (int) x
 								+ ChatColor.GOLD + ", Y: " + ChatColor.RED + (int) y 
 								+ ChatColor.GOLD + ", Z: " + ChatColor.RED + (int) z);
+						return true;
 					} else {
 						player.sendMessage(ChatColor.RED + "Command usage: /setspawn");
 					}
@@ -50,6 +51,6 @@ public class SetSpawnCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

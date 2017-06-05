@@ -27,6 +27,7 @@ public class ReverseCommand implements CommandExecutor {
 						final String argsJoined = String.join(" ", args);
 						final String reversedInput = reverseString(argsJoined); //Joins the elements of the String array "args" (i.e. the arguments), with a space separating the elements, putting the final string into reverseString()
 						player.sendMessage(ChatColor.GOLD + "The reverse of " + ChatColor.RED + argsJoined + ChatColor.GOLD + " is " + ChatColor.RED + reversedInput);
+						return true;
 					} else { //No arguments provided
 						player.sendMessage(ChatColor.RED + "Please provide words to reverse.");
 					}
@@ -35,6 +36,6 @@ public class ReverseCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

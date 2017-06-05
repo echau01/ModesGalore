@@ -51,6 +51,7 @@ public class OreLogsCommand implements CommandExecutor {
 							final int quartz = MineOreMessage.getQuartzHashMap().get(target);
 							player.sendMessage(ChatColor.GRAY + "  - " + ChatColor.WHITE + quartz + " quartz ore.");
 						}
+						return true;
 					} else {
 						player.sendMessage(ChatColor.RED + "Invalid arguments! Command usage: /orelogs <player>");
 					}
@@ -59,6 +60,6 @@ public class OreLogsCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

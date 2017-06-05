@@ -32,6 +32,7 @@ public class RTeleportCommand implements CommandExecutor {
 									+ ", Y: " + ChatColor.RED + Integer.toString(randomY) + ChatColor.GOLD
 									+ ", Z: " + ChatColor.RED + Integer.toString(randomZ)); //Sends success message.
 						}
+						return true;
 					} else {
 						player.sendMessage(ChatColor.RED + "Invalid arguments! Command usage: " + ChatColor.GOLD + "/rteleport");
 					}
@@ -40,6 +41,6 @@ public class RTeleportCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

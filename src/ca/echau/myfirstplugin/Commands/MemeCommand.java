@@ -77,6 +77,7 @@ public class MemeCommand implements CommandExecutor {
 								player.sendMessage(ChatColor.AQUA + s);
 							}
 						}
+						return true;
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -85,6 +86,6 @@ public class MemeCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

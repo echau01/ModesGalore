@@ -30,6 +30,7 @@ public class TPLightningCommand implements CommandExecutor {
 							for (int i = 0; i < 10; i++) {
 								player.getWorld().spawnEntity(teleportLocation, EntityType.BAT);
 							}
+							return true;
 						} else {
 							player.sendMessage(ChatColor.RED + "Could not find the player " + ChatColor.DARK_RED + args[0] + ChatColor.RED + "!");
 						}
@@ -41,6 +42,6 @@ public class TPLightningCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

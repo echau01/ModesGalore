@@ -35,6 +35,7 @@ public class SpawnCommand implements CommandExecutor {
 						final Location spawnLocation = new Location(world, x, y, z, yaw, pitch);
 						player.teleport(spawnLocation);
 						player.sendMessage(ChatColor.GOLD + "Teleported to spawn!");
+						return true;
 					} else {
 						if (player.hasPermission("myfirstplugin.setspawn")) {
 							player.sendMessage(ChatColor.RED + "There is no spawn set! Please set a spawn with /setspawn");
@@ -47,6 +48,6 @@ public class SpawnCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

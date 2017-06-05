@@ -47,6 +47,7 @@ public class RectangleAreaCommand implements CommandExecutor {
 								} else { //If NONE of length, width, and area is an integer
 									player.sendMessage(ChatColor.GOLD + "The area of a " + ChatColor.RED + recLength + ChatColor.GOLD + " by " + ChatColor.RED + recWidth + ChatColor.GOLD + " rectangle is " + ChatColor.RED + recArea + ChatColor.GOLD + ".");
 								}
+								return true;
 							} else { //Specified negative length and/or width
 								player.sendMessage(ChatColor.RED + "Please specify a length and a width that are both positive.");
 							}
@@ -63,6 +64,6 @@ public class RectangleAreaCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

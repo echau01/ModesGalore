@@ -52,6 +52,7 @@ public class ModesCommand implements CommandExecutor {
 						if (!modeFound) {
 							player.sendMessage(ChatColor.GOLD + "You have no modes enabled!");
 						}
+						return true;
 					} else if (args.length == 1) {
 						if (player.hasPermission("myfirstplugin.modes.player")) {
 							if (Bukkit.getPlayer(args[0]) != null) {
@@ -84,6 +85,7 @@ public class ModesCommand implements CommandExecutor {
 								if (!modeFound) {
 									player.sendMessage(ChatColor.RED + targetPlayer.getName() + ChatColor.GOLD + " has no modes enabled!");
 								}
+								return true;
 							} else {
 								player.sendMessage(ChatColor.RED + "Could not find the player " + ChatColor.DARK_RED + args[0] + ChatColor.RED + "!");
 							}
@@ -98,6 +100,6 @@ public class ModesCommand implements CommandExecutor {
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }

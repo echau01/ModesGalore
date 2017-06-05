@@ -37,6 +37,7 @@ public class GiveDirtCommand implements CommandExecutor {
 								final Inventory inv = Bukkit.createInventory(null, 9, ChatColor.DARK_AQUA + "Take the dirt!");
 								inv.addItem(dirt);	//Add 64 dirt to the newly created inventory
 								receiver.openInventory(inv);
+								return true;
 							} else {
 								player.sendMessage(ChatColor.RED + "Could not find the player " + ChatColor.DARK_RED + args[0] + ChatColor.RED + "!");
 							}
@@ -51,6 +52,7 @@ public class GiveDirtCommand implements CommandExecutor {
 										receiver.openInventory(inv);	//Opens the inventory of the receiver
 										player.sendMessage(ChatColor.GOLD + "Gave " + ChatColor.RED + dirtAmount + ChatColor.GOLD + " dirt to " + ChatColor.RED + receiver.getName() + ChatColor.GOLD + ".");
 										receiver.sendMessage(ChatColor.RED + player.getName() + ChatColor.GOLD + " gave you " + ChatColor.RED + dirtAmount + ChatColor.GOLD + " dirt!");
+										return true;
 									} else if (Double.parseDouble(args[1]) < 0){
 										player.sendMessage(ChatColor.RED + "Please specify a number greater than 0.");
 									} else { //The number specified was greater than 576 (the max capacity)
@@ -79,6 +81,7 @@ public class GiveDirtCommand implements CommandExecutor {
 												}
 											}
 										}
+										return true;
 									}
 								} catch (NumberFormatException exception) {	//In the case that the command sender did not provide an actual number
 									player.sendMessage(ChatColor.RED + "Please specify a proper number greater than 0.");
@@ -95,6 +98,6 @@ public class GiveDirtCommand implements CommandExecutor {
 				}
 			} 
 		}
-		return true;
+		return false;
 	}
 }

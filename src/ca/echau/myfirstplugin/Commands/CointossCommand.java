@@ -32,6 +32,7 @@ public class CointossCommand implements CommandExecutor {
 									player.sendMessage(ChatColor.RED + "You lose.");
 								}
 							}
+							return true;
 						} else { //Player typed something other than heads or tails.
 							player.sendMessage(ChatColor.RED + "Invalid arguments! Command usage: /cointoss <heads / tails>");
 						}
@@ -43,6 +44,6 @@ public class CointossCommand implements CommandExecutor {
 				}
 			} 
 		}
-		return true;
+		return false;
 	}
 }
