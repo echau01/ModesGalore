@@ -1,6 +1,6 @@
 # MyFirstPlugin
 
-MyFirstPlugin is a plugin for Minecraft. The plugin is made using the Spigot 1.11.2 API, and includes a bunch of
+MyFirstPlugin is a plugin for Minecraft. The plugin is made using the Spigot 1.12 API, and includes a bunch of
 mostly unrelated commands, Listeners that detect events, Runnables that execute tasks periodically, and a custom 
 "memes.txt" file.
 
