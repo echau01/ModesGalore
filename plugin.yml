@@ -1,6 +1,6 @@
 main: ca.echau.myfirstplugin.Main
 name: MyFirstPlugin
-version: 1.0
+version: 0.1a
 author: Eugene Chau
 description: MyFirstPlugin adds many features and commands that are not connected to one another.
 commands:
@@ -10,18 +10,14 @@ commands:
   damage:
     description: Damages a player by the specified amount of hearts.
     usage: /damage <player> <number of hearts>
-  ef:
-    description: Enables Farts Mode for the specified player. Sneak to fart! Same as /enablefarts
-    usage: /ef [player]
-  ep:
-    description: Enables the ability to poop for the specified player. Sneak to poop! Same as /enablepooping
-    usage: /ep [player]
   enablefarts:
-    description: Enables Farts Mode for the specified player. Sneak to fart! Same as /ef
+    description: Enables Farts Mode for the specified player. Sneak to fart!
     usage: /enablefarts [player]
+    aliases: ef
   enablepooping:
-    description: Enables the ability to poop for the specified player. Sneak to poop! Same as /ep
+    description: Enables the ability to poop for the specified player. Sneak to poop!
     usage: /enablepooping [player]
+    aliases: ep
   exarrows:
     description: Toggles Explosive Arrows for the specified player. When enabled, arrows explode upon landing.
     usage: /exarrows [player]
@@ -35,11 +31,9 @@ commands:
     description: Gives yourself/someone full health.
     usage: /heal [player]
   launchmode:
-    description: Toggles Launch Mode for the specified player. When enabled, shooting a bow will launch you in the air. Same as /lm
+    description: Toggles Launch Mode for the specified player. When enabled, shooting a bow will launch you in the air.
     usage: /launchmode [player]
-  lm:
-    description: Toggles Launch Mode for the specified player. When enabled, shooting a bow will launch you in the air. Same as /launchmode
-    usage: /lm [player]
+    aliases: lm
   meme:
     description: Displays a random meme.
     usage: /meme
@@ -50,26 +44,20 @@ commands:
     description: Views OreLogs of a specified player. OreLogs displays all ores that a player has mined in the past hour.
     usage: /orelogs <player>
   rainbowarmor:
-    description: Toggles Rainbow Armor for the specified player. When enabled, equipped leather armor always changes color. Same as /rarmor
+    description: Toggles Rainbow Armor for the specified player. When enabled, equipped leather armor always changes color.
     usage: /rainbowarmor [player]
-  rarmor:
-    description: Toggles Rainbow Armor for the specified player. When enabled, equipped leather armor always changes color. Same as /rainbowarmor
-    usage: /rarmor [player]
-  recarea:
-    description: Calculates the area of a rectangle with the specified length and width. Same as /rectanglearea
-    usage: /recarea <length> <width>
+    aliases: rarmor
   rectanglearea:
-    description: Calculates the area of a rectangle with the specified length and width. Same as /recarea
+    description: Calculates the area of a rectangle with the specified length and width.
     usage: /rectanglearea <length> <width>
+    aliases: recarea
   reverse:
     description: Reverses the word(s) you put into the command.
     usage: /reverse <a string of words>
   rteleport:
-    description: Teleports you to a random location. Same as /rtp
+    description: Teleports you to a random location.
     usage: /rteleport
-  rtp:
-    description: Teleports you to a random location. Same as /rteleport
-    usage: /rtp
+    aliases: rtp
   setfartdmg:
     description: Sets the damage of a Fart (produced when sneaking in Farts Mode) to the specified number of hearts.
     usage: /setfartdmg <number of hearts>
@@ -79,15 +67,11 @@ commands:
   spawn:
     description: Teleports to the spawn of the world you are currently in.
     usage: /spawn
-  tpl:
-    description: Teleports to a player and strikes them with lightning! Same as /tplightning
-    usage: /tpl <player>
   tplightning:
-    description: Teleports to a player and strikes them with lightning! Same as /tpl
+    description: Teleports to a player and strikes them with lightning!
     usage: /tplightning <player>
+    aliases: tpl
   walkonsmoke:
-    description: Toggles WalkOnSmoke Mode for the specified player. When enabled, fly around in the air and look down at your feet! Same as /wos
+    description: Toggles WalkOnSmoke Mode for the specified player. When enabled, fly around in the air and look down at your feet!
     usage: /walkonsmoke [player]
-  wos:
-    description: Toggles WalkOnSmoke Mode for the specified player. When enabled, fly around in the air and look down at your feet! Same as /walkonsmoke
-    usage: /wos [player]
+    aliases: wos
