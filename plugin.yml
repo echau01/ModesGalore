@@ -1,6 +1,6 @@
 main: ca.echau.myfirstplugin.Main
 name: MyFirstPlugin
-version: 0.1a
+version: 0.2a
 author: Eugene Chau
 description: MyFirstPlugin adds many features and commands that are not connected to one another.
 commands:
