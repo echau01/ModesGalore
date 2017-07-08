@@ -24,10 +24,15 @@ public class RectangleAreaCommand implements CommandExecutor {
 								final double recArea = recLength * recWidth;
 								final DecimalFormat df = new DecimalFormat();
 								df.setDecimalSeparatorAlwaysShown(false);
-								player.sendMessage(ChatColor.GOLD + "The area of a " + ChatColor.RED + df.format(recLength)
-									+ ChatColor.GOLD + " by " + ChatColor.RED + df.format(recWidth)
-									+ ChatColor.GOLD + " rectangle is " + ChatColor.RED + df.format(recArea)
-									+ ChatColor.GOLD + ".");
+								//any negative signs are removed from output message
+								//-0 is a valid input, and we want -0 to show up as 0 in the output
+								player.sendMessage(ChatColor.GOLD + "The area of a " 
+										+ ChatColor.RED + df.format(recLength).replaceAll("-", "") 
+										+ ChatColor.GOLD + " by " 
+										+ ChatColor.RED + df.format(recWidth).replaceAll("-", "") 
+										+ ChatColor.GOLD + " rectangle is " 
+										+ ChatColor.RED + df.format(recArea).replaceAll("-", "")
+										+ ChatColor.GOLD + ".");
 								return true;
 							} else { //Specified negative length and/or width
 								player.sendMessage(ChatColor.RED + "Please specify a length and a width that are both positive.");
