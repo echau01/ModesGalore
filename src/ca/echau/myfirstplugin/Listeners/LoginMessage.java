@@ -22,7 +22,7 @@ public class LoginMessage implements Listener {
 	@EventHandler
 	public void sendLoginMessage(final PlayerJoinEvent event) {
 		final Player player = event.getPlayer(); 
-		player.sendMessage(ChatColor.RED + "[MyFirstPlugin] " + ChatColor.GOLD + "MyFirstPlugin v0.2a enabled.");
+		player.sendMessage(ChatColor.RED + "[MyFirstPlugin] " + ChatColor.GOLD + "MyFirstPlugin v1.0 enabled.");
 		final Collection<Player> players = new ArrayList<Player>(Bukkit.getServer().getOnlinePlayers());
 		
 		//Set up individual config path for each player if none exists already.
