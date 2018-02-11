@@ -54,7 +54,6 @@ public class Main extends JavaPlugin {
 
 		//Registers Listeners
 		this.getServer().getPluginManager().registerEvents(new AntiExplosionOfEntities(this), this);
-		this.getServer().getPluginManager().registerEvents(new DeathMessages(), this);
 		this.getServer().getPluginManager().registerEvents(new ExplosiveArrows(this), this);
 		this.getServer().getPluginManager().registerEvents(new FartOnSneak(this), this);
 		this.getServer().getPluginManager().registerEvents(new LaunchYourselfWithBow(this), this);
