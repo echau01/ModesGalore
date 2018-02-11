@@ -63,7 +63,7 @@ commands:
     usage: /setfartdmg <number of hearts>
   setspawn:
     description: Sets world spawn of the world you are currently in. 
-    usage: /setspawn [x] [y] [z] [pitch] [yaw]
+    usage: /setspawn
   spawn:
     description: Teleports to the spawn of the world you are currently in.
     usage: /spawn
