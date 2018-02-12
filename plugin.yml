@@ -1,8 +1,8 @@
-main: ca.echau.myfirstplugin.Main
-name: MyFirstPlugin
+main: ca.echau.modesgalore.Main
+name: ModesGalore
 version: 1.0
 author: Eugene Chau
-description: MyFirstPlugin adds many features and commands that are not connected to one another.
+description: ModesGalore adds special abilities (i.e. "modes") that you can enable. Such abilities include farting, pooping, and firing explosive arrows. ModesGalore also contains many miscellaneous features and commands.
 commands:
   cointoss:
     description: Flip a coin! Guess either heads or tails and see what happens.
@@ -38,7 +38,7 @@ commands:
     description: Displays a random meme.
     usage: /meme
   modes:
-    description: Returns a list of enabled MyFirstPlugin modes for the specified player.
+    description: Returns a list of enabled modes for the specified player.
     usage: /modes [player]
   orelogs:
     description: Views OreLogs of a specified player. OreLogs displays all ores that a player has mined in the past hour.
